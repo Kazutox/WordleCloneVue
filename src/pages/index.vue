@@ -42,7 +42,12 @@ function handleButtonClick(){
 
   //2.Validate the guess and populate gridData for the round
   const data = gameGridData.value;
-  data[gameCount.value] = validateWordGuess();
+  const cells = validateWordGuess();
+  data[gameCount.value] = cells;
+  if(secretWord.toLowerCase() === inputWord.value.toLowerCase()){
+    window.alert("You have won the game!");
+    return;
+  }
   gameGridData.value = data;
 
   //3. Increase counter and reset input value
